@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -25,40 +26,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_arrow_back_white_24dp" />
 
-    <ImageView
-        android:id="@+id/image_menu"
-        style="?attr/borderlessButtonStyle"
-        android:layout_width="?attr/actionBarSize"
-        android:layout_height="?attr/actionBarSize"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_add_white_24dp" />
-
-    <ImageView
-        android:id="@+id/image_search"
-        style="?attr/borderlessButtonStyle"
-        android:layout_width="?attr/actionBarSize"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_marginEnd="@dimen/dimen_10"
-        app:layout_constraintEnd_toStartOf="@+id/image_menu"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_search_white_24dp" />
-
-    <EditText
-        android:id="@+id/edit_search"
-        android:layout_width="@dimen/dimen_0"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_marginStart="@dimen/dimen_10"
-        android:ems="10"
-        android:hint="@string/hint_search"
-        android:inputType="textPersonName"
-        android:textColor="@android:color/white"
-        android:textColorHint="@color/color_gray"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
-        app:layout_constraintEnd_toStartOf="@+id/image_search"
-        app:layout_constraintStart_toEndOf="@+id/image_back"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <android.support.design.widget.TabLayout
         android:id="@+id/tab_home"
         android:layout_width="@dimen/dimen_0"
@@ -75,5 +42,35 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Go to Salon"
+        android:textColor="#fff"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/view_pager_home"
+        app:layout_constraintEnd_toStartOf="@+id/buttonUploadSalon"
+        app:layout_constraintStart_toStartOf="@+id/image_back"
+        app:layout_constraintTop_toTopOf="@+id/toolbar" />
+
+    <Button
+        android:id="@+id/buttonUploadSalon"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Upload your salon"
+        android:textColor="#fff"
+        app:layout_constraintBottom_toTopOf="@+id/view_pager_home"
+        app:layout_constraintEnd_toEndOf="@+id/toolbar"
+        app:layout_constraintTop_toTopOf="@+id/toolbar" />
 
 </android.support.constraint.ConstraintLayout>
