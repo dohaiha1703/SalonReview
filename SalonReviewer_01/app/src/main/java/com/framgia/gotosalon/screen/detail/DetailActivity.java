@@ -6,7 +6,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.framgia.gotosalon.R;
@@ -14,6 +13,7 @@ import com.framgia.gotosalon.data.model.Salon;
 import com.framgia.gotosalon.data.repository.SalonRepository;
 import com.framgia.gotosalon.data.source.remote.SalonRemoteDataSource;
 import com.framgia.gotosalon.screen.base.BaseActivity;
+import com.framgia.gotosalon.screen.rate.RateSalon;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -60,6 +60,7 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
         findViewById(R.id.text_navigate_address).setOnClickListener(this);
         findViewById(R.id.text_navigate_email).setOnClickListener(this);
         findViewById(R.id.text_navigate_phone).setOnClickListener(this);
+        findViewById(R.id.textViewRate).setOnClickListener(this);
     }
 
     @Override
@@ -97,6 +98,11 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
                 if (intentPhone.resolveActivity(getPackageManager()) != null) {
                     startActivity(intentPhone);
                 }
+                break;
+            case R.id.textViewRate:
+                Intent intent = new Intent(DetailActivity.this, RateSalon.class);
+                intent.putExtra("salon", mSalon);
+                startActivity(intent);
                 break;
         }
     }

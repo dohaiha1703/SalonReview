@@ -34,6 +34,9 @@
         <activity
             android:name=".screen.update.UpdateActivity"
             android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".screen.rate.RateSalon"
+            android:windowSoftInputMode="stateHidden" />
     </application>
 
 </manifest>

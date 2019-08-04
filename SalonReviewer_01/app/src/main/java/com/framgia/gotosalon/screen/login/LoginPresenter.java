@@ -62,10 +62,6 @@ public class LoginPresenter implements LoginContract.Presenter {
             mView.onEmptyFieldPassword();
             return false;
         }
-        if (!.EMAIL_ADDRESS.matcher(account.getEmail()).matches()) {
-            mView.onInvalidEmailForm();
-            return false;
-        }
         return true;
     }
 
