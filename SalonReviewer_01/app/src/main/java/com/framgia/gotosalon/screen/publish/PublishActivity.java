@@ -101,6 +101,8 @@ public class PublishActivity extends BaseActivity implements View.OnClickListene
                 mSalon.setSalonDescription(mEditTextSalonDescription.getText().toString());
                 mSalon.setSalonOpenTime(mSpinnerOpen.getSelectedItem().toString());
                 mSalon.setSalonCloseTime(mSpinnerClose.getSelectedItem().toString());
+                mSalon.setRating(0.0);
+                mSalon.setCountRate(0);
                 mPresenter.uploadImageSalon(mUri,
                         idSalon, mSalon);
                 break;

@@ -14,6 +14,8 @@ public class Salon implements Serializable {
     private String mImageUrl;
     private String mSalonDescription;
     private int mSalonView;
+    private Double rating;
+    private int countRate;
 
     public Salon() {
     }
@@ -32,6 +34,22 @@ public class Salon implements Serializable {
         mImageUrl = imageUrl;
         mSalonDescription = salonDescription;
         mSalonView = salonView;
+    }
+
+    public Double getRating() {
+        return rating;
+    }
+
+    public void setRating(Double rating) {
+        this.rating = rating;
+    }
+
+    public int getCountRate() {
+        return countRate;
+    }
+
+    public void setCountRate(int countRate) {
+        this.countRate = countRate;
     }
 
     public String getSalonName() {

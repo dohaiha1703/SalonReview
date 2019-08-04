@@ -27,7 +27,6 @@ public interface UpdateContract {
         void onValidateSalonPhone();
 
         void onValidateSalonTime();
-
     }
 
     interface Presenter<View> {

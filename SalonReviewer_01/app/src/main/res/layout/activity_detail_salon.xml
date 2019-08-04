@@ -244,6 +244,18 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/text_salon_description"
                 app:layout_constraintTop_toBottomOf="@+id/text_salon_description" />
+
+            <TextView
+                android:id="@+id/text_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:maxLength="3"
+                android:text="0.0"
+                app:layout_constraintBottom_toBottomOf="@+id/imageViewStart5"
+                app:layout_constraintStart_toEndOf="@+id/imageViewStart5"
+                app:layout_constraintTop_toTopOf="@+id/imageViewStart5" />
+
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
 

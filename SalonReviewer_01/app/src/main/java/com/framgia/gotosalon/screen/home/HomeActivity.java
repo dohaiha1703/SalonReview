@@ -58,6 +58,9 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
         HomeContract.Presenter presenter = new HomePresenter(SalonRepository.getInstance(SalonRemoteDataSource.getInstance(databaseReference, storageReference)));
         presenter.setView(this);
         presenter.checkUserId(mUserId);
+        if (mUserId == null){
+            mImageMenu.setVisibility(View.GONE);
+        }
     }
 
     @Override

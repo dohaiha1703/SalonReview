@@ -3,16 +3,24 @@ package com.framgia.gotosalon.screen.rate;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.framgia.gotosalon.R;
 import com.framgia.gotosalon.data.model.Salon;
+import com.framgia.gotosalon.data.repository.SalonRepository;
+import com.framgia.gotosalon.data.source.remote.SalonRemoteDataSource;
 import com.framgia.gotosalon.screen.base.BaseActivity;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
-public class RateSalon extends BaseActivity {
+public class RateSalonActivity extends BaseActivity implements RateContract.View {
 
     private Salon mSalon;
     private ImageView star1, star2, star3, star4, star5;
     private int rating;
+    private RateContract.Presenter mPresenter;
 
     @Override
     protected int getLayoutResource() {
@@ -57,12 +65,28 @@ public class RateSalon extends BaseActivity {
                 setStars(view);
             }
         });
+
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference();
+        mPresenter = new RatePresenter(SalonRepository.getInstance(SalonRemoteDataSource.
+                getInstance(databaseReference, storageReference)));
+        mPresenter.setView(this);
+
+        findViewById(R.id.button_submit_rate).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Double allRatePoint = mSalon.getCountRate() * mSalon.getRating();
+                Double avgRate = (allRatePoint + rating) / (mSalon.getCountRate() + 1);
+                mSalon.setRating(avgRate);
+                mSalon.setCountRate(mSalon.getCountRate() + 1);
+                mPresenter.updateSalon(mSalon.getSalonId(), mSalon);
+            }
+        });
     }
 
     @Override
     protected void initData() {
-//        mSalon = (Salon) getIntent().getSerializableExtra("salon");
-//        Log.d("ha123", mSalon.getSalonName());
+        mSalon = (Salon) getIntent().getSerializableExtra("salon");
 
     }
 
@@ -75,7 +99,7 @@ public class RateSalon extends BaseActivity {
                 star4.setImageResource(R.drawable.ic_star_border_orange_24dp);
                 star5.setImageResource(R.drawable.ic_star_border_orange_24dp);
                 rating = 1;
-                Log.d("ha123", rating +"");
+                Log.d("ha123", rating + "");
                 break;
             case R.id.imageView2:
                 star1.setImageResource(R.drawable.ic_star_orange_24dp);
@@ -84,7 +108,7 @@ public class RateSalon extends BaseActivity {
                 star4.setImageResource(R.drawable.ic_star_border_orange_24dp);
                 star5.setImageResource(R.drawable.ic_star_border_orange_24dp);
                 rating = 2;
-                Log.d("ha123", rating +"");
+                Log.d("ha123", rating + "");
                 break;
             case R.id.imageView3:
                 star1.setImageResource(R.drawable.ic_star_orange_24dp);
@@ -93,7 +117,7 @@ public class RateSalon extends BaseActivity {
                 star4.setImageResource(R.drawable.ic_star_border_orange_24dp);
                 star5.setImageResource(R.drawable.ic_star_border_orange_24dp);
                 rating = 3;
-                Log.d("ha123", rating +"");
+                Log.d("ha123", rating + "");
                 break;
             case R.id.imageView4:
                 star1.setImageResource(R.drawable.ic_star_orange_24dp);
@@ -102,7 +126,7 @@ public class RateSalon extends BaseActivity {
                 star4.setImageResource(R.drawable.ic_star_orange_24dp);
                 star5.setImageResource(R.drawable.ic_star_border_orange_24dp);
                 rating = 4;
-                Log.d("ha123", rating +"");
+                Log.d("ha123", rating + "");
                 break;
             case R.id.imageView5:
                 star1.setImageResource(R.drawable.ic_star_orange_24dp);
@@ -111,8 +135,24 @@ public class RateSalon extends BaseActivity {
                 star4.setImageResource(R.drawable.ic_star_orange_24dp);
                 star5.setImageResource(R.drawable.ic_star_orange_24dp);
                 rating = 5;
-                Log.d("ha123", rating +"");
+                Log.d("ha123", rating + "");
                 break;
         }
+    }
+
+    @Override
+    public void onUpdateProgress() {
+
+    }
+
+    @Override
+    public void onUpdatehSalonSuccess() {
+        Toast.makeText(this, "rate success", Toast.LENGTH_SHORT).show();
+        finish();
+    }
+
+    @Override
+    public void onUpdatehSalonFailed() {
+        Toast.makeText(this, "rate failed", Toast.LENGTH_SHORT).show();
     }
 }
