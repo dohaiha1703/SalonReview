@@ -101,9 +101,9 @@ public class ManagerActivity extends BaseActivity implements View.OnClickListene
                 break;
             case R.id.image_search:
                 mSalons.clear();
-                String data = mEditTextSearch.getText().toString().trim();
+                String data = mEditTextSearch.getText().toString().toLowerCase().trim();
                 for (Salon x : mSalonsSearch) {
-                    if (x.getSalonName().contains(data)) {
+                    if (x.getSalonName().toLowerCase().contains(data)) {
                         mSalons.add(x);
                         Log.d("aaa", "onClick: ");
                     }

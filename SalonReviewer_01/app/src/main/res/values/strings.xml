@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GoToSalon</string>
+    <string name="app_name">Salon Review</string>
     <string name="button_login_as_guest">Use as guest</string>
     <string name="tittle_background">background</string>
     <string name="button_login_to_ad"><u>Login to advertise your salon </u></string>

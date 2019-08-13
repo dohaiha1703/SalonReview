@@ -82,6 +82,20 @@ public class RateSalonActivity extends BaseActivity implements RateContract.View
                 mPresenter.updateSalon(mSalon.getSalonId(), mSalon);
             }
         });
+
+        findViewById(R.id.button_cancel_rate).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+        findViewById(R.id.imageView).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
     }
 
     @Override

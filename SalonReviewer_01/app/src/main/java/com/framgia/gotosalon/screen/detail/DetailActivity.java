@@ -135,7 +135,13 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
 
     private void setStars(Double rating) {
 
-        if (0 <= rating && rating <= 1.5) {
+        if (rating == 0) {
+            star1.setImageResource(R.drawable.ic_star_border_orange_24dp);
+            star2.setImageResource(R.drawable.ic_star_border_orange_24dp);
+            star3.setImageResource(R.drawable.ic_star_border_orange_24dp);
+            star4.setImageResource(R.drawable.ic_star_border_orange_24dp);
+            star5.setImageResource(R.drawable.ic_star_border_orange_24dp);
+        } else if (0 <= rating && rating <= 1.5) {
             star1.setImageResource(R.drawable.ic_star_orange_24dp);
             star2.setImageResource(R.drawable.ic_star_border_orange_24dp);
             star3.setImageResource(R.drawable.ic_star_border_orange_24dp);
