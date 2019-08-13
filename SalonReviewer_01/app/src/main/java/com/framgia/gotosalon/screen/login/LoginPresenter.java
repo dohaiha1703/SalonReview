@@ -1,6 +1,7 @@
 package com.framgia.gotosalon.screen.login;
 
 import android.support.annotation.NonNull;
+import android.util.Patterns;
 
 import com.framgia.gotosalon.data.model.Account;
 import com.framgia.gotosalon.data.repository.AuthenicationRepository;
@@ -60,6 +61,10 @@ public class LoginPresenter implements LoginContract.Presenter {
         }
         if (account.getPassword().isEmpty()) {
             mView.onEmptyFieldPassword();
+            return false;
+        }
+        if (!Patterns.EMAIL_ADDRESS.matcher(account.getEmail()).matches()) {
+            mView.onInvalidEmailForm();
             return false;
         }
         return true;
